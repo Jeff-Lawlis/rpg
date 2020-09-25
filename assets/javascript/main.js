@@ -28,7 +28,6 @@ var characters = [
         imgUrl : "./assets/images/summer-smith.png"
     }
 ]
-var playerChar
 
 function populate(){
     document.getElementById("char-container").innerHTML = `
@@ -40,19 +39,20 @@ function populate(){
                 <span>${characters[i].name}</span>
                 <img src="${characters[i].imgUrl}"/>
                 <span>${characters[i].hp}</span>
+            </div>
         `
         document.getElementById("char-container").innerHTML += charDiv
     }
     
 }
 function chooseCharacter(){
+    var playerChar
     for (var i=0; i<document.getElementsByClassName("single-char").length; i++){
         document.getElementById("char-div"+i).addEventListener("click", function(e){
-            console.log("clicked")
-            playerChar = characters[i]
+            playerChar = characters[this.id[this.id.length-1]]
+            console.log(playerChar)
         })
     }
-    console.log(playerChar);
 }
 populate()
 chooseCharacter()
